@@ -1,0 +1,3 @@
+F:/aim_task/BLDC_pos_loop/cmake-build-debug/CMakeFiles/BLDC_pos_loop.dir
+F:/aim_task/BLDC_pos_loop/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/aim_task/BLDC_pos_loop/cmake-build-debug/CMakeFiles/rebuild_cache.dir
