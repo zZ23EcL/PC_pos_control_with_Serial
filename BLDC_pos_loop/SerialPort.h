@@ -5,7 +5,6 @@
 #ifndef BLDC_POS_LOOP_SERIALPORT_H
 #define BLDC_POS_LOOP_SERIALPORT_H
 
-
 #include <process.h>
 #include "TChar.h"
 #include <string>
@@ -17,6 +16,7 @@
 #include <cctype>
 #include <Windows.h>
 #include <stdlib.h>
+#include <vector>
 using namespace std;
 /** 串口通信类
 *
@@ -40,6 +40,9 @@ public:
     ~CSerialPort(void);
 
 public:
+
+    static string RX_Data;
+    //vector<int> RX_Mode;
 
     /** 初始化串口函数
     *
@@ -111,6 +114,18 @@ public:
     */
     bool DataConversion(UINT Data, UINT Mode, unsigned char* temp);
 
+    /** 接收串口数据处理
+    *
+    *  将接收到的16进制字符进行转换
+    *  @param:  UINT *DataMode 该种数据的类型
+    *  @param:  UINT *Data 数据大小
+    *  @param:  unsigned char* temp
+    *  @return: bool  转换成功
+    *  @note:   数据大小范围为4个字节
+    *  @see:
+    */
+    bool AntiDataConversion(unsigned int *Data, unsigned int *Mode, unsigned char* temp);
+
     /** 获取串口缓冲区中的字节数
     *
     *
@@ -179,6 +194,9 @@ private:
 
     /** 同步互斥,临界区保护 */
     CRITICAL_SECTION   m_csCommunicationSync;       //!< 互斥操作串口
+
+    /**  返回的字符串 */
+
 
 };
 

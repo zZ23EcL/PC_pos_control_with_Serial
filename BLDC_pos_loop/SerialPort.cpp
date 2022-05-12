@@ -247,7 +247,7 @@ UINT WINAPI CSerialPort::ListenThread(void* pParam)
             Sleep(SLEEP_TIME_INTERVAL);
             continue;
         }
-
+        string getBUF;
         /** 读取输入缓冲区中的数据并输出显示 */
         unsigned char cRecved = 0x00;
         do
@@ -255,18 +255,22 @@ UINT WINAPI CSerialPort::ListenThread(void* pParam)
             cRecved =0x00;
             if (pSerialPort->ReadChar(cRecved) == true)
             {
-
                 std::stringstream  ss;
+                string b;
                 int tm = cRecved;
                 ss << std::hex << std::setw(2) << std::setfill('0') << tm;
                 ss << " ";
                 string a = ss.str();
-                string b;
                 transform(a.begin(), a.end(), back_inserter(b), ::toupper);
-                cout <<  b ;
+                //cout<<b;
+                getBUF=getBUF+b;
                 continue;
             }
         } while (--BytesInQue);
+        //cout<<endl;
+        cout<<getBUF;
+        //RX_Data.push_back(getBUF);
+        RX_Data=getBUF;
     }
 
     return 0;
@@ -342,7 +346,6 @@ bool  CSerialPort::DataConversion(unsigned int Data, unsigned int Mode, unsigned
     if (sizeof(Data) > 4)
         return false;
 
-    unsigned char* tchar = new unsigned char[8];
     temp[0] = Mode;
     temp[6] = 0x0D;
     temp[7] = 0x0A;
@@ -353,4 +356,13 @@ bool  CSerialPort::DataConversion(unsigned int Data, unsigned int Mode, unsigned
     temp[2] = Data >> 24 & 0xff;
 
     return true;
+}
+
+bool  CSerialPort::AntiDataConversion(unsigned int *Data, unsigned int *Mode, unsigned char* temp) {
+//    if (sizeof(Data) > 4)
+//        return false;
+//
+//    Data=temp[0]|temp[1]<<8|temp[2]<<16|temp[3]<<24;
+//    Mode=temp[5];
+//    return true;
 }
