@@ -8,8 +8,11 @@
 using namespace std;
 /** 线程退出标志 */
 bool CSerialPort::s_bExit = false;
-/** 当串口无数据时,sleep至下次查询间隔的时间,单位:秒 */
+/** 当串口无数据时,sleep至下次查询间隔的时间,单位:毫秒 */
 const UINT SLEEP_TIME_INTERVAL = 5;
+/**  static变量 在类外初始化,需要放在main外，用于保存接收的数据   **/
+string CSerialPort::RX_Data;
+static string RX_BUF;
 
 CSerialPort::CSerialPort(void)
         : m_hListenThread(INVALID_HANDLE_VALUE)
@@ -268,9 +271,13 @@ UINT WINAPI CSerialPort::ListenThread(void* pParam)
             }
         } while (--BytesInQue);
         //cout<<endl;
-        cout<<getBUF;
+        //cout<<getBUF;
         //RX_Data.push_back(getBUF);
-        RX_Data=getBUF;
+        pSerialPort->RX_Data=getBUF;
+        RX_BUF=getBUF;
+        //cout<<RX_BUF;
+
+        //cout<<RX_Data;
     }
 
     return 0;
@@ -358,6 +365,11 @@ bool  CSerialPort::DataConversion(unsigned int Data, unsigned int Mode, unsigned
     return true;
 }
 
+int CSerialPort::getData() {
+    int Data;
+    //Data=RX_Data[0]|RX_Data<<8|RX_Data<<16|RX_Data<<24;
+    return Data;
+}
 bool  CSerialPort::AntiDataConversion(unsigned int *Data, unsigned int *Mode, unsigned char* temp) {
 //    if (sizeof(Data) > 4)
 //        return false;
@@ -366,3 +378,4 @@ bool  CSerialPort::AntiDataConversion(unsigned int *Data, unsigned int *Mode, un
 //    Mode=temp[5];
 //    return true;
 }
+

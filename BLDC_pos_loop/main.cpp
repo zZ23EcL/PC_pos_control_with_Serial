@@ -1,13 +1,21 @@
 //#include "StdAfx.h"  
 #include "SerialPort.h"
+#include "MiniPID.h"
 
 using namespace std;
+extern  static string RX_BUF;
 
-string CSerialPort::RX_Data;//static变量 在类外初始化,需要放在main外
 int _tmain(int argc, _TCHAR *argv[]) {
 
     CSerialPort mySerialPort;//首先将之前定义的类实例化
     int length = 8;//定义传输的长度
+    int DataMode;//数据类型
+    int Data;//数据
+    MiniPID PID=MiniPID(1,0,0);
+    /**PID变量*/
+    double target;
+    double sensor;
+    double control2stm32;
 
     unsigned char *temp = new unsigned char[8];//动态创建一个数组
 
@@ -30,10 +38,22 @@ int _tmain(int argc, _TCHAR *argv[]) {
     cout << mySerialPort.WriteData(temp, 8) << endl;//这个函数就是给串口发送数据的函数，temp就是要发送的数组。
     cout << mySerialPort.GetBytesInCOM() << endl;//这个函数就是显示返回值函数
     //delete temp[];
-    //_sleep(1*1000);
 //    for(int i=0;i<mySerialPort.RX_Data.size();i++)
 //        cout<<mySerialPort.RX_Data[i]<<endl;
-    cout<<mySerialPort.RX_Data<<endl;
+    //cout<<CSerialPort::RX_Data<<endl;
+    cout<<RX_BUF<<endl;
+
     system("pause");
+    /*
+    while(true){
+        //get some sort of sensor value
+
+        //set some sort of target value
+        double output=pid.getOutput(sensor,target);
+        //do something with the output
+        mySerialPort.WriteData(temp, 8);
+        Sleep(50);//等于Delay_ms(50)
+    }
+     */
     return 0;
 }

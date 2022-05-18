@@ -61,6 +61,12 @@ build CMakeFiles/BLDC_pos_loop.dir/SerialPort.cpp.obj: CXX_COMPILER__BLDC_pos_lo
   OBJECT_DIR = CMakeFiles\BLDC_pos_loop.dir
   OBJECT_FILE_DIR = CMakeFiles\BLDC_pos_loop.dir
 
+build CMakeFiles/BLDC_pos_loop.dir/MiniPID.cpp.obj: CXX_COMPILER__BLDC_pos_loop_Debug F$:/aim_task/BLDC_pos_loop/MiniPID.cpp || cmake_object_order_depends_target_BLDC_pos_loop
+  DEP_FILE = CMakeFiles\BLDC_pos_loop.dir\MiniPID.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\BLDC_pos_loop.dir
+  OBJECT_FILE_DIR = CMakeFiles\BLDC_pos_loop.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target BLDC_pos_loop
@@ -69,7 +75,7 @@ build CMakeFiles/BLDC_pos_loop.dir/SerialPort.cpp.obj: CXX_COMPILER__BLDC_pos_lo
 #############################################
 # Link the executable BLDC_pos_loop.exe
 
-build BLDC_pos_loop.exe: CXX_EXECUTABLE_LINKER__BLDC_pos_loop_Debug CMakeFiles/BLDC_pos_loop.dir/main.cpp.obj CMakeFiles/BLDC_pos_loop.dir/SerialPort.cpp.obj
+build BLDC_pos_loop.exe: CXX_EXECUTABLE_LINKER__BLDC_pos_loop_Debug CMakeFiles/BLDC_pos_loop.dir/main.cpp.obj CMakeFiles/BLDC_pos_loop.dir/SerialPort.cpp.obj CMakeFiles/BLDC_pos_loop.dir/MiniPID.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\BLDC_pos_loop.dir

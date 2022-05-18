@@ -32,6 +32,7 @@ typedef enum AxisType
     AXIS_OO = 4,
 }AXIS_TYPE;
 
+//static string RX_BUF;
 
 class CSerialPort
 {
@@ -42,6 +43,7 @@ public:
 public:
 
     static string RX_Data;
+    string test_Data;
     //vector<int> RX_Mode;
 
     /** 初始化串口函数
@@ -146,10 +148,32 @@ public:
     */
     bool ReadChar(unsigned char &cRecved);
 
+    /** 读取串口信息中的数据信息并返回
+    *
+    *
+    *  @param:  void
+    *  @return: int  串口中的数据
+    *  @note:
+    *  @see:
+    */
+    int getData(void);
+
+    /** 读取串口信息中的数据类型信息并返回
+    *
+    *
+    *  @param:  void
+    *  @return: int  串口中的数据类型
+    *  @note:
+    *  @see:
+    */
+    int getMode(void);
+
     unsigned char *MotorMoveXY(unsigned char x, unsigned char y);//xy相对移动
     unsigned char *StopMotor(unsigned char sm1);
     unsigned char *SetSpeed(AXIS_TYPE enAxisType, int speed);
     unsigned char *SetRunSpeed(int TY, int speed);
+
+
 private:
 
     /** 打开串口
