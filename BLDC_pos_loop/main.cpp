@@ -3,7 +3,7 @@
 #include "MiniPID.h"
 
 using namespace std;
-extern  static string RX_BUF;
+
 
 int _tmain(int argc, _TCHAR *argv[]) {
 
@@ -40,8 +40,8 @@ int _tmain(int argc, _TCHAR *argv[]) {
     //delete temp[];
 //    for(int i=0;i<mySerialPort.RX_Data.size();i++)
 //        cout<<mySerialPort.RX_Data[i]<<endl;
-    //cout<<CSerialPort::RX_Data<<endl;
-    cout<<RX_BUF<<endl;
+    cout<<CSerialPort::RX_Data<<endl;
+    //cout<<RX_BUF<<endl;
 
     system("pause");
     /*

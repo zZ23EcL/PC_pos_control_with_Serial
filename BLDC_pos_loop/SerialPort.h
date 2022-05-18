@@ -32,7 +32,7 @@ typedef enum AxisType
     AXIS_OO = 4,
 }AXIS_TYPE;
 
-//static string RX_BUF;
+static string RX_BUF;
 
 class CSerialPort
 {
@@ -42,7 +42,7 @@ public:
 
 public:
 
-    static string RX_Data;
+    mutable string RX_Data;
     string test_Data;
     //vector<int> RX_Mode;
 

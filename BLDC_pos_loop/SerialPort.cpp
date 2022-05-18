@@ -11,8 +11,8 @@ bool CSerialPort::s_bExit = false;
 /** 当串口无数据时,sleep至下次查询间隔的时间,单位:毫秒 */
 const UINT SLEEP_TIME_INTERVAL = 5;
 /**  static变量 在类外初始化,需要放在main外，用于保存接收的数据   **/
-string CSerialPort::RX_Data;
-static string RX_BUF;
+//string CSerialPort::RX_Data;
+
 
 CSerialPort::CSerialPort(void)
         : m_hListenThread(INVALID_HANDLE_VALUE)
@@ -273,8 +273,8 @@ UINT WINAPI CSerialPort::ListenThread(void* pParam)
         //cout<<endl;
         //cout<<getBUF;
         //RX_Data.push_back(getBUF);
-        pSerialPort->RX_Data=getBUF;
-        RX_BUF=getBUF;
+        this->RX_Data=getBUF;
+        //RX_BUF=getBUF;
         //cout<<RX_BUF;
 
         //cout<<RX_Data;
