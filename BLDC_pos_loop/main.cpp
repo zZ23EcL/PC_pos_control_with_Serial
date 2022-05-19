@@ -40,10 +40,14 @@ int _tmain(int argc, _TCHAR *argv[]) {
     //delete temp[];
 //    for(int i=0;i<mySerialPort.RX_Data.size();i++)
 //        cout<<mySerialPort.RX_Data[i]<<endl;
-    cout<<CSerialPort::RX_Data<<endl;
+    cout<<RX_BUF<<endl;
+    //cout<<&RX_BUF<<"\nmain"<<endl;
     //cout<<RX_BUF<<endl;
 
     system("pause");
+    cout<<RX_BUF<<endl;
+    cout<<PID.str2data(RX_BUF)<<endl;
+
     /*
     while(true){
         //get some sort of sensor value

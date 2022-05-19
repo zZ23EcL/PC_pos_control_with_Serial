@@ -1,6 +1,8 @@
 #ifndef MINIPID_H
 #define MINIPID_H
-
+#include <string>
+using namespace std;
+extern string RX_BUF;
 class MiniPID{
 public:
 	MiniPID(double, double, double);
@@ -23,6 +25,10 @@ public:
 	double getOutput();
 	double getOutput(double);
 	double getOutput(double, double);
+
+    /** 用于将接收的字符串转换为数据 */
+    int str2data(string str);
+    bool is_hex(char c, int& v);
 
 private:
 	double clamp(double, double, double);

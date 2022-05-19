@@ -5,6 +5,7 @@
 
 //#include "StdAfx.h"
 #include "SerialPort.h"
+#include "MiniPID.h"
 using namespace std;
 /** 线程退出标志 */
 bool CSerialPort::s_bExit = false;
@@ -12,7 +13,7 @@ bool CSerialPort::s_bExit = false;
 const UINT SLEEP_TIME_INTERVAL = 5;
 /**  static变量 在类外初始化,需要放在main外，用于保存接收的数据   **/
 //string CSerialPort::RX_Data;
-
+//string RX_BUF="";
 
 CSerialPort::CSerialPort(void)
         : m_hListenThread(INVALID_HANDLE_VALUE)
@@ -198,7 +199,6 @@ bool CSerialPort::OpenListenThread()
     {
         return false;
     }
-
     return true;
 }
 //关闭监听线程
@@ -231,7 +231,6 @@ UINT CSerialPort::GetBytesInCOM()
     {
         BytesInQue = comstat.cbInQue; /** 获取在输入缓冲区中的字节数 */
     }
-
     return BytesInQue;
 }
 //串口监听线程
@@ -262,24 +261,25 @@ UINT WINAPI CSerialPort::ListenThread(void* pParam)
                 string b;
                 int tm = cRecved;
                 ss << std::hex << std::setw(2) << std::setfill('0') << tm;
-                ss << " ";
+                //ss << " ";
                 string a = ss.str();
                 transform(a.begin(), a.end(), back_inserter(b), ::toupper);
-                //cout<<b;
                 getBUF=getBUF+b;
                 continue;
             }
         } while (--BytesInQue);
+
         //cout<<endl;
         //cout<<getBUF;
         //RX_Data.push_back(getBUF);
-        this->RX_Data=getBUF;
-        //RX_BUF=getBUF;
-        //cout<<RX_BUF;
-
-        //cout<<RX_Data;
+//        RX_BUF=getBUF;
+//        cout<<&RX_BUF<<endl;
+//        cout<<&getBUF<<endl;
+//        cout<<RX_BUF<<endl;
+        if(getBUF!="")
+            RX_BUF=getBUF;
+        cout<<RX_BUF<<endl;
     }
-
     return 0;
 }
 //读取串口接收缓冲区中一个字节的数据
@@ -365,17 +365,5 @@ bool  CSerialPort::DataConversion(unsigned int Data, unsigned int Mode, unsigned
     return true;
 }
 
-int CSerialPort::getData() {
-    int Data;
-    //Data=RX_Data[0]|RX_Data<<8|RX_Data<<16|RX_Data<<24;
-    return Data;
-}
-bool  CSerialPort::AntiDataConversion(unsigned int *Data, unsigned int *Mode, unsigned char* temp) {
-//    if (sizeof(Data) > 4)
-//        return false;
-//
-//    Data=temp[0]|temp[1]<<8|temp[2]<<16|temp[3]<<24;
-//    Mode=temp[5];
-//    return true;
-}
+
 

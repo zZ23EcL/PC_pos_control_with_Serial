@@ -10,7 +10,7 @@
 */
 
 #include "MiniPID.h"
-
+std::string RX_BUF="";
 //**********************************
 //Constructor functions
 //**********************************
@@ -370,3 +370,42 @@ void MiniPID::checkSigns(){
 		if(F<0) F*=-1;
 	}
 }
+
+int MiniPID::str2data(string str) {
+    int Data;
+    size_t cnt=str.size();
+    for (int i=0; cnt; i++, cnt--)
+    {
+        if (!str[i])
+        {
+            return false;
+        }
+        int v = 0;
+        if (is_hex(str[i], v))
+        {
+            Data = Data * 16 + v;
+        }
+    }
+    return Data;
+}
+
+bool MiniPID::is_hex(char c, int& v)
+{
+    if (0x20 <= c && isdigit(c))
+    {
+        v = c - '0';
+        return true;
+    }
+    else if ('A' <= c && c <= 'F')
+    {
+        v = c - 'A' + 10;
+        return true;
+    }
+    else if ('a' <= c && c <= 'f')
+    {
+        v = c - 'a' + 10;
+        return true;
+    }
+    return false;
+}
+
