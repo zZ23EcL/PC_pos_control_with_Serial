@@ -364,6 +364,203 @@ bool  CSerialPort::DataConversion(unsigned int Data, unsigned int Mode, unsigned
 
     return true;
 }
+/**********************************************************/
+/*                 faulhaber电机RS232通讯部分               */
+/**********************************************************/
 
+//CRC计算,这里是计算一个u8的crc，使用时需要用类似的循环
+/*
+uint8_t CRC=0xFF;
+for(int i=0;i++;i<5)
+    CRC=mySerialPort.CalcCRCByte(*temp+i,CRC);
+ */
 
+uint8_t  CSerialPort::CalcCRCByte(uint8_t u8Byte,uint8_t u8CRC){
+    uint8_t i;
+    u8CRC=u8CRC^u8Byte;
+    for(i=0;i<8;i++){
+        if(u8CRC&0x01){
+            u8CRC=(u8CRC>>1)^0xD5;
+        }
+        else{
+            u8CRC>>1;
+        }
+    }
+    return u8CRC;
+}
 
+//生成通讯字符串
+uint8_t* CSerialPort::GenerateBuffer(uint8_t NodeNum,uint8_t command,uint8_t* data,uint8_t datalength){
+    uint8_t *temp = new unsigned char[datalength+4];
+    uint8_t CRC;
+    temp[0]=datalength+4;
+    temp[1]=NodeNum;
+    temp[2]=command;
+    for(uint8_t i=0;i++;i<datalength){
+        temp[3+i]=data[i];
+    }
+    temp[datalength+3]=CalcCRCByte(*temp,CRC);
+    return temp;
+}
+
+//读取接收到的字符串
+bool  CSerialPort::readBuffer(uint8_t *temp){
+    uint8_t BufLength=0;
+    bool startCount=0;
+    for(uint8_t i=0;i<64;i++){
+        if(*temp+i=='S')
+            startCount=1;
+        if(startCount)
+            BufLength++;
+        if(*temp+i=='E')
+            break;
+    }
+    uint8_t length=*temp+1;
+    uint8_t node=*temp+2;
+    uint8_t command=*temp+3;
+    uint8_t crc=*temp+length-2;
+    uint16_t index;
+    uint8_t subindex;
+    uint32_t value;
+    uint16_t statusword;
+    //这里只有结点1
+    if(node!=0x01){
+        printf("Error node");
+        return 0;
+    }
+    switch(command){
+            //0x01 Response of SDO read service
+            //控制参数speed pos这些就在这里
+            case 0x01:{
+                index=((*temp+5)<<8)+(*temp+4);
+                subindex=*temp+6;
+                for(uint8_t i=0;i<length-7;i++)
+                    value+=*temp<<(i*8);
+                break;
+            }
+            //0x02 Response of SDO write request
+            case 0x02:{
+                index=((*temp+5)<<8)+(*temp+4);
+                subindex=*temp+6;
+                //这里的返回的是他们的object entry，不需要使用
+                break;
+            }
+            //0x04  Response of write controlword
+            case 0x04:{
+                if(*temp+4==0){
+                    printf("Error code=0,is OK!");
+                }
+                break;
+            }
+            //0x05 Receive statusword
+            case 0x05:{
+                subindex=*temp+6;
+                break;
+            }
+        default:{
+            printf("unknow message!");
+            break;
+        }
+    }
+    return 1;
+}
+ //写控制字
+void CSerialPort::writeControlWord(uint8_t temp[],uint8_t type){
+    uint8_t length=0x06;
+    uint8_t NodeNum=1;
+    uint8_t command=0x04;
+    uint8_t controlWordLB;
+    uint8_t controlWordHB;
+
+    switch(type){
+        //停车
+        case 1:{
+            controlWordLB=0x06;
+            controlWordHB=0x00;
+            break;
+        }
+        //开机
+        case 2:{
+            controlWordLB=0x07;
+            controlWordHB=0x00;
+            break;
+        }
+        //使能
+        case 3:{
+            controlWordLB=0x0F;
+            controlWordHB=0x00;
+            break;
+        }
+        default:{
+            printf("ControlWord Type Error!");
+            break;
+        }
+    }
+     temp[0]='S';
+     temp[1]=length;
+     temp[2]=NodeNum;
+     temp[3]=command;
+     temp[4]=controlWordLB;
+     temp[5]=controlWordHB;
+     uint8_t CRC=0xFF;
+     for(int i=1;i<6;i++)
+         CRC=CalcCRCByte(temp[i],CRC);
+     temp[6]=CRC;
+     temp[7]='E';
+}
+
+//写目标数据
+void CSerialPort::writeData(uint8_t temp[],int data,uint8_t type){
+    uint8_t length=0x0a;
+    uint8_t command=0x02;
+    uint8_t NodeNum=0x01;
+    uint8_t indexHB;
+    uint8_t indexLB;
+    uint8_t subindex;
+    switch(type){
+        //速度
+        case 1:{
+            subindex=0x00;
+            indexLB=0xFF;
+            indexHB=0x60;
+            break;
+        }
+        case 2:{
+            subindex=0x00;
+            indexLB=0x7A;
+            indexHB=0x60;
+            break;
+        }
+        default:{
+            printf("Erorr Data Type!");
+            break;
+        }
+    }
+    uint8_t dataBuf[4];
+    dataBuf[3] = data & 0xff;
+    dataBuf[2] = data >> 8  & 0xff;
+    dataBuf[1] = data >> 16 & 0xff;
+    dataBuf[0] = data >> 24 & 0xff;
+
+    temp[0]='S';
+    temp[1]=length;
+    temp[2]=NodeNum;
+    temp[3]=command;
+    temp[4]=indexLB;
+    temp[5]=indexHB;
+    temp[6]=subindex;
+    /********************************************/
+    /*  这里有个问题是写入数据是按低位写还是高位优先写？ */
+    /********************************************/
+    //先按照低位先的来
+    temp[7] = data & 0xff;
+    temp[8] = data >> 8  & 0xff;
+    temp[9] = data >> 16 & 0xff;
+    temp[10] = data >> 24 & 0xff;
+    uint8_t CRC=0xFF;
+    for(int i=1;i<length;i++)
+        CRC=CalcCRCByte(temp[i],CRC);
+    printf("%x\n",CRC);
+    temp[11]=CRC;
+    temp[12]='E';
+}

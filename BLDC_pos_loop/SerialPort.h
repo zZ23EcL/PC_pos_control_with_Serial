@@ -17,6 +17,8 @@
 #include <Windows.h>
 #include <stdlib.h>
 #include <vector>
+
+
 using namespace std;
 /** 串口通信类
 *
@@ -154,6 +156,81 @@ public:
     unsigned char *SetSpeed(AXIS_TYPE enAxisType, int speed);
     unsigned char *SetRunSpeed(int TY, int speed);
 
+    /*******************************************/
+    /*        以下用于与FAULHABER驱动通讯          */
+    /*******************************************/
+
+
+    /** CRC计算
+    *
+    *
+    *  @param:  u8 Byte CRC
+    *  @return: u8  CRC
+    *  @note:
+    *  @see:
+    */
+    uint8_t CalcCRCByte(uint8_t u8Byte,uint8_t u8CRC);
+
+    uint8_t* GenerateBuffer(uint8_t NodeNum,uint8_t command,uint8_t* data,uint8_t datalenght);
+    /*******************************************/
+    /** 生成通讯的字符串
+    *
+    *
+    *  @param:  u8 NodeNum，command，data,datalenth
+    *  @return: u8*  Buffer
+    *  @note:
+    *  @see:
+    */
+
+    bool readBuffer(uint8_t *temp);
+    /*******************************************/
+    /** 读取FaulHaber发送的字符串
+    *
+    *
+    *  @param:  u8*  Buffer 即接收到的字符串
+    *  @return: bool 1为成功 0为识别失败
+    *  @note:
+    *  @see:
+    */
+
+    void writeControlWord(uint8_t temp[],uint8_t type);
+    /*******************************************/
+    /** 生成向FaulHaber写控制字的字符串
+    *
+    *
+    *  @param:
+    *  u8* temp 储存生成的数组
+    *  u8  type controlword的种类
+    *               1：停机
+    *               2：开机
+    *               3：使能
+    *  @return:
+    *  @note:
+    *  @see:
+    */
+
+
+    void writeData(uint8_t temp[],int data,uint8_t type);
+    /*******************************************/
+    /** 生成向FaulHaber写数据的字符串
+    *
+    *
+    *  @param:
+    *  u8* temp 储存生成的数组
+    *  int data 需要写入的数据
+    *  u8  type 数据类型
+    *               1：目标速度
+    *               2：目标位置
+    *  @return:
+    *  @note:
+    *  @see:
+    */
+
+
+
+    /*********************************/
+    /*       faulhaber通讯部分结束     */
+    /*********************************/
 
 private:
 
