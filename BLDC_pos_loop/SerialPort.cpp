@@ -404,57 +404,94 @@ uint8_t* CSerialPort::GenerateBuffer(uint8_t NodeNum,uint8_t command,uint8_t* da
 }
 
 //读取接收到的字符串
-bool  CSerialPort::readBuffer(uint8_t *temp){
-    uint8_t BufLength=0;
-    bool startCount=0;
-    for(uint8_t i=0;i<64;i++){
-        if(*temp+i=='S')
-            startCount=1;
-        if(startCount)
-            BufLength++;
-        if(*temp+i=='E')
-            break;
-    }
-    uint8_t length=*temp+1;
-    uint8_t node=*temp+2;
-    uint8_t command=*temp+3;
-    uint8_t crc=*temp+length-2;
+uint8_t CSerialPort::readBuffer(uint8_t *temp,uint32_t *value){
+
+    uint8_t length=*(temp+1);
+    uint8_t node=*(temp+2);
+    uint8_t command=*(temp+3);
+    uint8_t crc=*(temp+length-2);
     uint16_t index;
     uint8_t subindex;
-    uint32_t value;
     uint16_t statusword;
+    uint8_t type;
+    uint32_t v=0;
     //这里只有结点1
     if(node!=0x01){
-        printf("Error node");
+        printf("Error node %x",node);
         return 0;
     }
     switch(command){
+        //比较关键的就是0x01和0x05 两个部分
             //0x01 Response of SDO read service
             //控制参数speed pos这些就在这里
             case 0x01:{
-                index=((*temp+5)<<8)+(*temp+4);
-                subindex=*temp+6;
+                index=((*(temp+5))<<8)+(*(temp+4));
+                subindex=*(temp+6);
                 for(uint8_t i=0;i<length-7;i++)
-                    value+=*temp<<(i*8);
+                    v+=*(temp+7+i)<<(i*8);
+                *value=v;
+                switch (index) {
+                    //实时位置
+                    case 0x6064:{
+                        type=1;
+                        break;
+                    }
+                    //实时速度
+                    case 0x606C:{
+                        type=2;
+                        break;
+                    }
+                    //实时力矩
+                    case 0x6077:{
+                        type=3;
+                        break;
+                    }
+                    //目标位置
+                    case 0x607A:{
+                        type=4;
+                        break;
+                    }
+                    //目标速度
+                    case 0x60FF:{
+                        type=5;
+                        break;
+                    }
+                }
                 break;
             }
             //0x02 Response of SDO write request
             case 0x02:{
-                index=((*temp+5)<<8)+(*temp+4);
-                subindex=*temp+6;
+                index=((*(temp+5))<<8)+(*(temp+4));
+                subindex=*(temp+6);
                 //这里的返回的是他们的object entry，不需要使用
                 break;
             }
             //0x04  Response of write controlword
             case 0x04:{
-                if(*temp+4==0){
+                if(*(temp+4)==0){
                     printf("Error code=0,is OK!");
                 }
                 break;
             }
-            //0x05 Receive statusword
+            //0x05 Receive statusword  U16
             case 0x05:{
-                subindex=*temp+6;
+                subindex=*(temp+6);
+                statusword=(*(temp+7))+((*(temp+8))<<8);
+                statusword=statusword&0x00FF;
+                //闭锁
+                if(statusword&0x40)
+                    type=6;
+                else{
+                    //待机
+                    if(!(statusword-0x21)&0xF)
+                        type=7;
+                    //开机
+                    if(!(statusword-0x23)&0xF)
+                        type=8;
+                    //操作
+                    if(!(statusword&0x27)&0xF)
+                        type=9;
+                }
                 break;
             }
         default:{
@@ -462,7 +499,7 @@ bool  CSerialPort::readBuffer(uint8_t *temp){
             break;
         }
     }
-    return 1;
+    return type;
 }
  //写控制字
 void CSerialPort::writeControlWord(uint8_t temp[],uint8_t type){
@@ -560,7 +597,7 @@ void CSerialPort::writeData(uint8_t temp[],int data,uint8_t type){
     uint8_t CRC=0xFF;
     for(int i=1;i<length;i++)
         CRC=CalcCRCByte(temp[i],CRC);
-    printf("%x\n",CRC);
+    //printf("%x\n",CRC);
     temp[11]=CRC;
     temp[12]='E';
 }

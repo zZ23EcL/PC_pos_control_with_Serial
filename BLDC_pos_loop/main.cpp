@@ -4,6 +4,9 @@
 
 using namespace std;
 
+void ntest(uint32_t *num){
+    *num=100;
+}
 
 int _tmain(int argc, _TCHAR *argv[]) {
 
@@ -66,6 +69,39 @@ int _tmain(int argc, _TCHAR *argv[]) {
     uint8_t datatemp[13];
     mySerialPort.writeData(datatemp,12345,2);
 
-
+    //readBuf test
+    uint8_t buftest[13];
+    buftest[0]='S';
+    buftest[1]=0x0A;
+    buftest[2]=0x01;
+    buftest[3]=0x01;
+    buftest[4]=0x64;
+    buftest[5]=0x60;
+    buftest[6]=0x00;
+    buftest[7]=0x39;
+    buftest[8]=0x30;
+    buftest[9]=0x00;
+    buftest[10]=0x00;
+    buftest[11]=0xFF;
+    buftest[12]='E';
+    uint8_t t=0;
+    uint32_t v=0;
+    t=mySerialPort.readBuffer(buftest,&v);
+    printf("%d\n",t);
+    printf("%d\n",v);
+    uint8_t stattst[8];
+    stattst[0]='S';
+    stattst[1]=8;
+    stattst[2]=0x01;
+    stattst[3]=0x05;
+    stattst[4]=0x41;
+    stattst[5]=0x60;
+    stattst[6]=0x00;
+    stattst[7]=0x21;
+    stattst[8]=0x00;
+    stattst[9]=0xFF;
+    stattst[10]='E';
+    t=mySerialPort.readBuffer(stattst,0);
+    printf("%d\n",t);
     return 0;
 }

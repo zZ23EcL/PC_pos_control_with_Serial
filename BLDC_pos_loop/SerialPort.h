@@ -5,6 +5,7 @@
 #ifndef BLDC_POS_LOOP_SERIALPORT_H
 #define BLDC_POS_LOOP_SERIALPORT_H
 
+
 #include <process.h>
 #include "TChar.h"
 #include <string>
@@ -182,13 +183,17 @@ public:
     *  @see:
     */
 
-    bool readBuffer(uint8_t *temp);
+    uint8_t readBuffer(uint8_t *temp,uint32_t *value);
     /*******************************************/
     /** 读取FaulHaber发送的字符串
     *
     *
     *  @param:  u8*  Buffer 即接收到的字符串
-    *  @return: bool 1为成功 0为识别失败
+    *          u32*  value  得到的数据大小
+    *
+    *  @return: u8   type 返回的数据类型
+    *                     1：实时位置  2：实时速度  3：实时力矩   4:目标位置 5：目标速度 6-9：statusword
+    *                     6：闭锁 7：待机 8：开机 9：操作
     *  @note:
     *  @see:
     */
