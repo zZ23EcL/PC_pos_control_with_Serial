@@ -231,7 +231,47 @@ public:
     *  @see:
     */
 
+    void getDataRequest(uint8_t temp[],uint8_t type);
+    /*******************************************/
+    /** 生成向FaulHaber发送希望得到数据的命令请求
+    *
+    *
+    *  @param:
+    *  u8* temp 储存生成的数组
+    *  u8  type 数据类型
+    *               1：实际转矩
+    *               2：实际速度
+    *               3：实际转矩
+    *  @return:
+    *  @note:  使用方法，先构造一个长度为九的u8数组 uint8_t temp[8];getDataRequest(temp,0x01);
+    *  @see:
+    */
 
+    int str2data(string str);
+    /*******************************************/
+    /** 将串口监听到的十六进制字符串转化为具体的数据大小
+    *
+    *
+    *  @param:
+    *  string str 十六进制字符串
+    *  @return:
+    *  int data 字符串得到的数据
+    *  @note:
+    *  @see:
+    */
+
+    bool is_hex(char c, int& v);
+    /*******************************************/
+    /** 字符转换用的子函数
+    *
+    *
+    *  @param:
+    *  char C 输入的字符 int& v要得到数据
+    *  @return:
+    *  bool 是否为十六进制字符
+    *  @note:
+    *  @see:
+    */
 
     /*********************************/
     /*       faulhaber通讯部分结束     */
