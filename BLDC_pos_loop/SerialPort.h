@@ -18,7 +18,7 @@
 #include <Windows.h>
 #include <stdlib.h>
 #include <vector>
-
+#include <thread>
 
 using namespace std;
 /** 串口通信类
@@ -161,7 +161,7 @@ public:
     /*        以下用于与FAULHABER驱动通讯          */
     /*******************************************/
 
-
+    uint8_t CalcCRCByte(uint8_t u8Byte,uint8_t u8CRC);
     /** CRC计算
     *
     *
@@ -170,7 +170,7 @@ public:
     *  @note:
     *  @see:
     */
-    uint8_t CalcCRCByte(uint8_t u8Byte,uint8_t u8CRC);
+
 
     uint8_t* GenerateBuffer(uint8_t NodeNum,uint8_t command,uint8_t* data,uint8_t datalenght);
     /*******************************************/
@@ -269,6 +269,19 @@ public:
     *  char C 输入的字符 int& v要得到数据
     *  @return:
     *  bool 是否为十六进制字符
+    *  @note:
+    *  @see:
+    */
+
+    uint8_t swap(uint8_t a);
+    /*******************************************/
+    /** 对一个字节按比特顺序反排
+    *
+    *
+    *  @param:
+    *  char C 输入的字节
+    *  @return:
+    *  uint8_t 反序排列的的结果
     *  @note:
     *  @see:
     */

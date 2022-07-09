@@ -350,12 +350,12 @@ for(int i=0;i++;i<5)
 uint8_t CSerialPort::CalcCRCByte(uint8_t u8Byte, uint8_t u8CRC) {
     uint8_t i;
     u8CRC = u8CRC ^ u8Byte;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i <8 ; i++) {
         if (u8CRC & 0x01) {
             u8CRC = (u8CRC >> 1) ^ 0xD5;
         }
         else {
-            u8CRC >> 1;
+            u8CRC >>= 1;
         }
     }
     return u8CRC;
@@ -513,8 +513,9 @@ void CSerialPort::writeControlWord(uint8_t temp[], uint8_t type) {
     temp[4] = controlWordLB;
     temp[5] = controlWordHB;
     uint8_t CRC = 0xFF;
-    for (int i = 1; i < 6; i++)
-        CRC = CalcCRCByte(temp[i], CRC);
+    for (int i = 1; i <length; i++){
+        printf("%x",temp[i]);
+        CRC = CalcCRCByte(temp[i], CRC);}
     temp[6] = CRC;
     temp[7] = 'E';
 }
@@ -563,6 +564,7 @@ void CSerialPort::writeData(uint8_t temp[], int data, uint8_t type) {
     temp[6] = subindex;
     /********************************************/
     /*  这里有个问题是写入数据是按低位写还是高位优先写？ */
+    /*               问题解决，按低位写            */
     /********************************************/
     //先按照低位先的来
     temp[7] = data & 0xff;
@@ -605,7 +607,7 @@ void CSerialPort::getDataRequest(uint8_t temp[], uint8_t type) {
     temp[4] = indexLB;
     temp[5] = indexHB;
     temp[6] = 0x00;
-    for (int i = 1; i < length; i++)
+    for (int i = 1; i <length; i++)
         CRC = CalcCRCByte(temp[i], CRC);
     temp[7] = CRC;
     temp[8] = 'E';
@@ -640,4 +642,17 @@ bool CSerialPort::is_hex(char c, int &v) {
         return true;
     }
     return false;
+}
+
+//单字节按比特顺序取反
+uint8_t CSerialPort::swap(uint8_t a) {
+    uint8_t ans = 0;
+    uint8_t temp = a;
+    uint8_t x = 0x80;
+    while (temp) {
+        ans |= (temp & 0x01) ? x : 0;
+        x >>= 1;
+        temp >>= 1;
+    }
+    return ans;
 }

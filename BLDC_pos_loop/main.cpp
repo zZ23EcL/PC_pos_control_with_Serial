@@ -6,7 +6,7 @@
 #define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)
 
 using namespace std;
-
+const int bitnum=8;
 
 int _tmain(int argc, _TCHAR *argv[]) {
 
@@ -153,5 +153,20 @@ int _tmain(int argc, _TCHAR *argv[]) {
     mySerialPort.getDataRequest(temp,0x03);
     for(int i=0;i<9;i++)
         printf("%x ",temp[i]);
+    cout<<endl;
+
+//    uint8_t CRC=0xFF;
+//    CRC = mySerialPort.CalcCRCByte(0x00, CRC);
+//    printf("%x ",CRC);
+//    CRC = mySerialPort.CalcCRCByte(0x60, CRC);
+//    printf("%x ",CRC);
+//    CRC = mySerialPort.CalcCRCByte(0x64, CRC);
+//    printf("%x ",CRC);
+//    CRC = mySerialPort.CalcCRCByte(0x01, CRC);
+//    printf("%x ",CRC);
+//    CRC = mySerialPort.CalcCRCByte(0x01, CRC);
+//    printf("%x ",CRC);
+//    CRC = mySerialPort.CalcCRCByte(0x07, CRC);
+//    printf("%x ",CRC);
     return 0;
 }
