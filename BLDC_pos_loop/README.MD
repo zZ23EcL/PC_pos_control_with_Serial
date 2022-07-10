@@ -1,25 +1,3 @@
-# 鍩轰簬STM32閫熷害鐜殑涓婁綅鏈轰綅缃幆鎺у埗
-
-## MiniPID鐨勭敤娉�
-``` cpp
-MiniPID pid=MiniPID(1,0,0);
-//set any other PID configuration options here. 
-
-while(true){
-  //get some sort of sensor value
-  //set some sort of target value
-  double output=pid.getOutput(sensor,target);
-  //do something with the output
-  delay(50);
-}
-```
-
-## 涓插彛閫氳鏁版嵁鐨勫畾涔�
-mode锛�00 stop
-01 start
-02 target
-03 sensor
-
 # 基于FAULHABER MC5010S 的驱动设置
 
 ## 之前的问题 
@@ -138,3 +116,34 @@ def calcCRC(temp):
 ## 2022/07/06
 
 早上基本把收发都DEBUG完了，下一步在转换器到之前可以考虑先尝试做一下pybind
+
+### *接线*
+2 RX
+3 Tx
+5 GND
+
+电机的控制突然不行了，不是接线的问题
+
+## 2022/07/07 
+查出来了，是编码器的问题，霍尔可以用，但是效果不是很好  
+增加了得到actual data的request字符串生成函数  
+发现CRC计算部分存在问题  
+例如 需要得到 actual pos的request应为  
+53 07 01 01 64 60 00 56 45  
+而程序计算得到的为
+53 07 01 01 64 60 00 9C 45  
+CRC不同，考虑是不是CRC计算顺序出错了？？
+CRC-8
+CRC polynom 0xD5 = 1101 0101
+
+
+## 2022/07/08
+数据传输总是从最小数据开始的
+CRC -8 DVB S2
+
+## 2022/07/09
+![RS232](RS232%E8%AE%BE%E7%BD%AE.png)
+
+问题解决 抄漏等号了。。。。
+
+

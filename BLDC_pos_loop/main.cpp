@@ -154,6 +154,24 @@ int _tmain(int argc, _TCHAR *argv[]) {
     for(int i=0;i<9;i++)
         printf("%x ",temp[i]);
     cout<<endl;
+    uint8_t posbuffer[13];
+    posbuffer[0]='S';
+    posbuffer[1]=0x0B;
+    posbuffer[2]=0x01;
+    posbuffer[3]=0x01;
+    posbuffer[4]=0x64;
+    posbuffer[5]=0x60;
+    posbuffer[6]=0x00;
+    posbuffer[7]=0x00;
+    posbuffer[8]=0x00;
+    posbuffer[9]=0x00;
+    posbuffer[10]=0x00;
+    posbuffer[11]=0x5A;
+    posbuffer[12]='E';
+    uint8_t type;
+    uint32_t value;
+    type=mySerialPort.readBuffer(posbuffer,&value);
+    printf("%x  %d",type,value);
 
 //    uint8_t CRC=0xFF;
 //    CRC = mySerialPort.CalcCRCByte(0x00, CRC);
