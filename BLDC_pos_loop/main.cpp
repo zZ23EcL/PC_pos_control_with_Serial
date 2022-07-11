@@ -98,80 +98,94 @@ int _tmain(int argc, _TCHAR *argv[]) {
 //    stattst[10]='E';
 //    t=mySerialPort.readBuffer(stattst,0);
 //    printf("%d\n",t);
-//    while(1){
-//
-//        //暂停
-//        if(KEY_DOWN('S')){//需要大写
-//            system("pause");
-//        }
-//        //结束
-//        if(KEY_DOWN('E')){//需要大写
-//            break;
-//        }
-//        //启动
-//        if(KEY_DOWN('G')){
-//            printf("\nStart Up! Connecting Motor...\n");
-//            uint8_t controlw[8];
-//            mySerialPort.writeControlWord(controlw,1);
-//            cout << mySerialPort.WriteData(controlw, 8) << endl;
-//            Sleep(20);
-//            mySerialPort.writeControlWord(controlw,2);
-//            cout << mySerialPort.WriteData(controlw, 8) << endl;
-//            Sleep(20);
-//            mySerialPort.writeControlWord(controlw,3);
-//            cout << mySerialPort.WriteData(controlw, 8) << endl;
-//            printf("Connecting Finished!\n");
-//        }
-//        if(KEY_DOWN('C')){
-//            int type;
-//            uint8_t Ctype;
-//            uint32_t Cvalue;
-//            uint8_t datatemp[13];
-//            printf("\n1: Speed_demand  2: Position_demand\nplease input control type  :");
-//            cin >> type;
-//            if(type==1)
-//                Ctype=0x01;
-//            else if (type==2)
-//                Ctype=0x03;
-//            else
-//                Ctype=0x00;
-//            printf("\nplease input control value  :");
-//            cin >> Cvalue;
-//            mySerialPort.writeData(datatemp,Cvalue,Ctype);
-//            cout << mySerialPort.WriteData(datatemp, 13) << endl;
-//            if (!mySerialPort.OpenListenThread())//是否打开监听线程，开启线程用来传输返回值
-//            {
-//                std::cout << "OpenListenThread fail !" << std::endl;
-//            } else {
-//                std::cout << "OpenListenThread success !" << std::endl;
-//            }
-//        }
-//        //修改数据
-//        Sleep(200);//循环时间间隔，防止太占内存
-//    }
-    uint8_t temp[9];
-    mySerialPort.getDataRequest(temp,0x03);
-    for(int i=0;i<9;i++)
-        printf("%x ",temp[i]);
-    cout<<endl;
-    uint8_t posbuffer[13];
-    posbuffer[0]='S';
-    posbuffer[1]=0x0B;
-    posbuffer[2]=0x01;
-    posbuffer[3]=0x01;
-    posbuffer[4]=0x64;
-    posbuffer[5]=0x60;
-    posbuffer[6]=0x00;
-    posbuffer[7]=0x00;
-    posbuffer[8]=0x00;
-    posbuffer[9]=0x00;
-    posbuffer[10]=0x00;
-    posbuffer[11]=0x5A;
-    posbuffer[12]='E';
-    uint8_t type;
-    uint32_t value;
-    type=mySerialPort.readBuffer(posbuffer,&value);
-    printf("%x  %d",type,value);
+    while(1){
+
+        //暂停
+        if(KEY_DOWN('S')){//需要大写
+            system("pause");
+        }
+        //结束
+        if(KEY_DOWN('E')){//需要大写
+            break;
+        }
+        //启动，建立连接并进入控制模式,经过测试是可以的
+        if(KEY_DOWN('G')){
+            printf("\nStart Up! Connecting Motor...\n");
+            uint8_t controlw[8];
+            mySerialPort.writeControlWord(controlw,1);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            Sleep(20);
+            mySerialPort.writeControlWord(controlw,2);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            Sleep(20);
+            mySerialPort.writeControlWord(controlw,3);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            printf("Connecting Finished!\n");
+        }
+        if(KEY_DOWN('C')){
+            int type;
+            uint8_t Ctype;
+            uint32_t Cvalue;
+            uint8_t datatemp[13];
+            printf("\n1: Speed_demand  2: Position_demand\nplease input control type  :");
+            cin >> type;
+            if(type==1)
+                Ctype=0x01;
+            else if (type==2)
+                Ctype=0x03;
+            else
+                Ctype=0x00;
+            printf("\nplease input control value  :");
+            cin >> Cvalue;
+            mySerialPort.writeData(datatemp,Cvalue,Ctype);
+            cout << mySerialPort.WriteData(datatemp, 13) << endl;
+            if (!mySerialPort.OpenListenThread())//是否打开监听线程，开启线程用来传输返回值
+            {
+                std::cout << "OpenListenThread fail !" << std::endl;
+            } else {
+                std::cout << "OpenListenThread success !" << std::endl;
+            }
+        }
+        //断开连接，退出控制使能
+        if(KEY_DOWN('U')){
+            printf("\nSwitch OFF! Disconnecting Motor...\n");
+            uint8_t controlw[8];
+            mySerialPort.writeControlWord(controlw,3);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            Sleep(20);
+            mySerialPort.writeControlWord(controlw,2);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            Sleep(20);
+            mySerialPort.writeControlWord(controlw,1);
+            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            printf("Closed Connecting Finished!\n");
+        }
+        //修改数据
+        Sleep(20);//循环时间间隔，防止太占内存,这个值不能设置的太大，否则有问题，之前的200就有问题
+    }
+//    uint8_t temp[9];
+//    mySerialPort.getDataRequest(temp,0x03);
+//    for(int i=0;i<9;i++)
+//        printf("%x ",temp[i]);
+//    cout<<endl;
+//    uint8_t posbuffer[13];
+//    posbuffer[0]='S';
+//    posbuffer[1]=0x0B;
+//    posbuffer[2]=0x01;
+//    posbuffer[3]=0x01;
+//    posbuffer[4]=0x64;
+//    posbuffer[5]=0x60;
+//    posbuffer[6]=0x00;
+//    posbuffer[7]=0x00;
+//    posbuffer[8]=0x00;
+//    posbuffer[9]=0x00;
+//    posbuffer[10]=0x00;
+//    posbuffer[11]=0x5A;
+//    posbuffer[12]='E';
+//    uint8_t type;
+//    uint32_t value;
+//    type=mySerialPort.readBuffer(posbuffer,&value);
+//    printf("%x  %d",type,value);
 
 //    uint8_t CRC=0xFF;
 //    CRC = mySerialPort.CalcCRCByte(0x00, CRC);
