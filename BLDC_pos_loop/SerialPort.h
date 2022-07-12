@@ -206,16 +206,31 @@ public:
     *  @param:
     *  u8* temp 储存生成的数组
     *  u8  type controlword的种类
-    *               1：停机
-    *               2：开机
+    *               1：初始开启
+    *               2：停机
     *               3：使能
+    *               4：停机开启
     *  @return:
     *  @note:
     *  @see:
     */
 
+    void writeOperationMode(uint8_t temp[],int8_t type);
+    /*******************************************/
+    /** 生成向FaulHaber修改控制模式的字符串
+    *
+    *
+    *  @param:
+    *  u8* temp 储存生成的数组
+    *  u8  type 控制模式的种类
+    *               1：PP
+    *               3：PV
+    *  @return:
+    *  @note:
+    *  @see:
+    */
 
-    void writeData(uint8_t temp[],int data,uint8_t type);
+    void getData(uint8_t temp[],int32_t data,uint8_t type);
     /*******************************************/
     /** 生成向FaulHaber写数据的字符串
     *

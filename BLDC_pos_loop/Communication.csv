@@ -1,0 +1,404 @@
+Terminal - Communication
+2022/7/11 16:16:14
+
+Time;Data;Telegram;Info
+16:09:37.632;"COM6 opened (115200 Bit/s)";;
+16:09:37.632;"1 GOBJ 1000.00";"Transmit: 53 07 01 01 00 10 00 42 45";
+16:09:38.149;;;"No response"
+16:09:38.296;"COM6 closed";;
+16:09:38.381;"COM6 opened (115200 Bit/s)";;
+16:09:38.381;"1 GOBJ 1000.00";"Transmit: 53 07 01 01 00 10 00 42 45";
+16:09:38.882;;;"No response"
+16:09:38.882;"0 GOBJ 1000.00";"Transmit: 53 07 00 01 00 10 00 E9 45";
+16:09:39.384;;;"No response"
+16:09:39.531;"COM6 closed";;
+16:09:39.631;"COM6 opened (115200 Bit/s)";;
+16:09:39.785;"COM6 closed";;
+16:09:40.001;"COM6 opened (115200 Bit/s)";;
+16:09:40.001;"1 GOBJ 1000.00";"Transmit: 53 07 01 01 00 10 00 42 45";
+16:09:40.503;;;"No response"
+16:09:40.503;"1 GOBJ 1018.04";"Transmit: 53 07 01 01 18 10 04 F4 45";
+16:09:41.004;;;"No response"
+16:09:51.414;"Node 1 - Bootup: MC5010 S ET";"Receive: 53 0F 01 00 4D 43 35 30 31 30 20 53 20 45 54 B9 45";
+16:09:51.683;"COM6 closed";;
+16:09:51.768;"COM6 opened (115200 Bit/s)";;
+16:09:51.783;"1 GOBJ 1000.00";"Transmit: 53 07 01 01 00 10 00 42 45";
+16:09:51.799;"1 GOBJ 1000.00 = 4325778 (0x00420192)";"Receive: 53 0B 01 01 00 10 00 92 01 42 00 60 45";
+16:09:51.799;"1 GLOBJ 1008.00";"Transmit: 53 07 01 08 08 10 00 43 45";
+16:09:51.830;"1 GLOBJ 1008.00 = MC5010 S ET";"Receive: 53 14 01 08 08 10 00 0B 00 4D 43 35 30 31 30 20 53 20 45 54 EC 45 
+... Receive: 53 05 01 0A 01 A5 45";
+16:09:51.830;"1 GOBJ 1018.01";"Transmit: 53 07 01 01 18 10 01 A4 45";
+16:09:51.846;"1 GOBJ 1018.01 = 327 (0x00000147)";"Receive: 53 0B 01 01 18 10 01 47 01 00 00 11 45";
+16:09:51.846;"1 GOBJ 1023.00";"Transmit: 53 07 01 01 23 10 00 61 45";
+16:09:51.862;"1 GOBJ 1023.00 = Request aborted: Object does not exist in the object dictionary (Abort Code = 0x06020000)";"Receive: 53 0B 01 03 23 10 00 00 00 02 06 6B 45";"Error receiving"
+16:09:51.868;"1 GOBJ 1018.04";"Transmit: 53 07 01 01 18 10 04 F4 45";
+16:09:51.884;"1 GOBJ 1018.04 = 131900103 (0x07DCA2C7)";"Receive: 53 0B 01 01 18 10 04 C7 A2 DC 07 13 45";
+16:09:51.884;"1 GLOBJ 6403.00";"Transmit: 53 07 01 08 03 64 00 69 45";
+16:09:51.915;"1 GLOBJ 6403.00 = 4221G018BXTH";"Receive: 53 15 01 08 03 64 00 0C 00 34 32 32 31 47 30 31 38 42 58 54 48 0A 45 
+... Receive: 53 05 01 0A 01 A5 45";
+16:09:52.063;"COM6 closed";;
+16:09:52.263;"COM6 opened (115200 Bit/s)";;
+16:09:52.269;"1 GOBJ 1018.04";"Transmit: 53 07 01 01 18 10 04 F4 45";"Serial number (Identity object)"
+16:09:52.285;"1 GOBJ 1018.04 = 131900103 (0x07DCA2C7)";"Receive: 53 0B 01 01 18 10 04 C7 A2 DC 07 13 45";
+16:09:52.348;"1 GLOBJ 100A.00";"Transmit: 53 07 01 08 0A 10 00 41 45";"Manufacturer software version"
+16:09:52.385;"1 GLOBJ 100A.00 = 0101.02K";"Receive: 53 11 01 08 0A 10 00 08 00 30 31 30 31 2E 30 32 4B 92 45 
+... Receive: 53 05 01 0A 01 A5 45";
+16:09:52.486;"1 GOBJ 3001.0A";"Transmit: 53 07 01 01 01 30 0A 96 45";"Program memory (Active program)"
+16:09:52.501;"1 GOBJ 3001.0A = 16100 (0x3EE4)";"Receive: 53 09 01 01 01 30 0A E4 3E 42 45";
+16:09:52.501;"1 GOBJ 2329.0B";"Transmit: 53 07 01 01 29 23 0B F9 45";"Motor type (Motor and application data for motor control)"
+16:09:52.517;"1 GOBJ 2329.0B = 0 (0x00)";"Receive: 53 08 01 01 29 23 0B 00 5C 45";
+16:09:52.517;"1 GOBJ 233F.00";"Transmit: 53 07 01 01 3F 23 00 B1 45";"Operation mode options"
+16:09:52.532;"1 GOBJ 233F.00 = 49 (0x0031)";"Receive: 53 09 01 01 3F 23 00 31 00 71 45";
+16:09:52.532;"1 GOBJ 608F.01";"Transmit: 53 07 01 01 8F 60 01 43 45";"Encoder increments (Position encoder resolution)"
+16:09:52.548;"1 GOBJ 608F.01 = 16384 (0x00004000)";"Receive: 53 0B 01 01 8F 60 01 00 40 00 00 0F 45";
+16:09:52.548;"1 GOBJ 6091.01";"Transmit: 53 07 01 01 91 60 01 5D 45";"Motor shaft revolutions (Gear ratio)"
+16:09:52.564;"1 GOBJ 6091.01 = 1 (0x00000001)";"Receive: 53 0B 01 01 91 60 01 01 00 00 00 FA 45";
+16:09:52.564;"1 GOBJ 6091.02";"Transmit: 53 07 01 01 91 60 02 F4 45";"Driving shaft revolutions (Gear ratio)"
+16:09:52.586;"1 GOBJ 6091.02 = 1 (0x00000001)";"Receive: 53 0B 01 01 91 60 02 01 00 00 00 AC 45";
+16:09:52.586;"1 GOBJ 6092.01";"Transmit: 53 07 01 01 92 60 01 5E 45";"Feed (Feed constant)"
+16:09:52.602;"1 GOBJ 6092.01 = 16384 (0x00004000)";"Receive: 53 0B 01 01 92 60 01 00 40 00 00 ED 45";
+16:09:52.602;"1 GOBJ 6092.02";"Transmit: 53 07 01 01 92 60 02 F7 45";"Shaft revolutions (Feed constant)"
+16:09:52.617;"1 GOBJ 6092.02 = 1 (0x00000001)";"Receive: 53 0B 01 01 92 60 02 01 00 00 00 05 45";
+16:09:52.617;"1 GOBJ 6096.01";"Transmit: 53 07 01 01 96 60 01 5A 45";"Numerator (Velocity factor)"
+16:09:52.633;"1 GOBJ 6096.01 = 1 (0x00000001)";"Receive: 53 0B 01 01 96 60 01 01 00 00 00 FD 45";
+16:09:52.633;"1 GOBJ 6096.02";"Transmit: 53 07 01 01 96 60 02 F3 45";"Divisor (Velocity factor)"
+16:09:52.648;"1 GOBJ 6096.02 = 16384 (0x00004000)";"Receive: 53 0B 01 01 96 60 02 00 40 00 00 15 45";
+16:09:52.648;"1 GLOBJ 6403.00";"Transmit: 53 07 01 08 03 64 00 69 45";"Motor catalogue number"
+16:09:52.686;"1 GLOBJ 6403.00 = 4221G018BXTH";"Receive: 53 15 01 08 03 64 00 0C 00 34 32 32 31 47 30 31 38 42 58 54 48 0A 45 
+... Receive: 53 05 01 0A 01 A5 45";
+16:09:52.686;"1 GOBJ 2328.01";"Transmit: 53 07 01 01 28 23 01 58 45";"Controller type (Device data for thermal model)"
+16:09:52.702;"1 GOBJ 2328.01 = 0 (0x00)";"Receive: 53 08 01 01 28 23 01 00 FD 45";
+16:09:52.702;"1 GOBJ 2407.00";"Transmit: 53 07 01 01 07 24 00 8E 45";"SW revision number"
+16:09:52.717;"1 GOBJ 2407.00 = 2273 (0x000008E1)";"Receive: 53 0B 01 01 07 24 00 E1 08 00 00 94 45";
+16:09:52.717;"1 GLOBJ 1009.00";"Transmit: 53 07 01 08 09 10 00 42 45";"Manufacturer hardware version"
+16:09:52.749;"1 GLOBJ 1009.00 = 0102.03B";"Receive: 53 11 01 08 09 10 00 08 00 30 31 30 32 2E 30 33 42 CF 45 
+... Receive: 53 05 01 0A 01 A5 45";
+16:09:52.849;"1 GOBJ 6502.00";"Transmit: 53 07 01 01 02 65 00 CA 45";"Supported drive modes"
+16:09:52.865;"1 GOBJ 6502.00 = 933 (0x000003A5)";"Receive: 53 0B 01 01 02 65 00 A5 03 00 00 9F 45";
+16:09:53.288;"1 GOBJ 2330.01";"Transmit: 53 07 01 01 30 23 01 40 45";"Actual commutation angle source (Switch position for actual values )"
+16:09:53.303;"1 GOBJ 2330.01 = 2 (0x02)";"Receive: 53 08 01 01 30 23 01 02 18 45";
+16:09:53.303;"1 GOBJ 2330.02";"Transmit: 53 07 01 01 30 23 02 E9 45";"Actual velocity source (Switch position for actual values )"
+16:09:53.319;"1 GOBJ 2330.02 = 5 (0x05)";"Receive: 53 08 01 01 30 23 02 05 49 45";
+16:09:53.319;"1 GOBJ 2330.03";"Transmit: 53 07 01 01 30 23 03 17 45";"Actual position source (Switch position for actual values )"
+16:09:53.335;"1 GOBJ 2330.03 = 5 (0x05)";"Receive: 53 08 01 01 30 23 03 05 E2 45";
+16:09:53.617;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:09:53.633;"1 GOBJ 6041.00 = 64 (0x0040)";"Receive: 53 09 01 01 41 60 00 40 00 C2 45";
+16:09:53.648;"1 GOBJ 6060.00";"Transmit: 53 07 01 01 60 60 00 52 45";"Modes of operation"
+16:09:53.664;"1 GOBJ 6060.00 = 9 (0x09)";"Receive: 53 08 01 01 60 60 00 09 54 45";
+16:09:53.689;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:09:53.705;"1 GOBJ 6061.00 = 9 (0x09)";"Receive: 53 08 01 01 61 60 00 09 AA 45";
+16:09:53.720;"1 GOBJ 3001.03";"Transmit: 53 07 01 01 01 30 03 9F 45";"Actual program position (Active program)"
+16:09:53.736;"1 GOBJ 3001.03 = 0 (0x0000)";"Receive: 53 09 01 01 01 30 03 00 00 3B 45";
+16:09:53.751;"1 GOBJ 3001.04";"Transmit: 53 07 01 01 01 30 04 98 45";"Actual program state (Active program)"
+16:09:53.773;"1 GOBJ 3001.04 = 0 (0x00)";"Receive: 53 08 01 01 01 30 04 00 97 45";
+16:09:54.553;"1 GOBJ 3001.08";"Transmit: 53 07 01 01 01 30 08 C1 45";"Error state (Active program)"
+16:09:54.569;"1 GOBJ 3001.08 = 1 (0x01)";"Receive: 53 08 01 01 01 30 08 01 9A 45";
+16:09:54.569;"1 GOBJ 3001.09";"Transmit: 53 07 01 01 01 30 09 3F 45";"Error code (Active program)"
+16:09:54.591;"1 GOBJ 3001.09 = 0 (0x0000)";"Receive: 53 09 01 01 01 30 09 00 00 31 45";
+16:11:04.835;"1 GOBJ 1018.04";"Transmit: 53 07 01 01 18 10 04 F4 45";"Serial number (Identity object)"
+16:11:04.872;"1 GOBJ 1018.04 = 131900103 (0x07DCA2C7)";"Receive: 53 0B 01 01 18 10 04 C7 A2 DC 07 13 45";
+16:11:04.888;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:11:04.903;"1 GOBJ 6061.00 = 9 (0x09)";"Receive: 53 08 01 01 61 60 00 09 AA 45";
+16:11:04.903;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:11:04.919;"1 GOBJ 6061.00 = 9 (0x09)";"Receive: 53 08 01 01 61 60 00 09 AA 45";
+16:11:04.919;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:11:04.934;"1 GOBJ 6041.00 = 64 (0x0040)";"Receive: 53 09 01 01 41 60 00 40 00 C2 45";
+16:11:05.675;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:05.690;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:05.706;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:05.721;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:06.423;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:06.439;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:06.454;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:06.476;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:07.178;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:07.194;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:07.209;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:07.225;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:07.927;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:07.942;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:07.958;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:07.980;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:08.682;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:08.698;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:08.713;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:08.729;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:09.499;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:09.515;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:09.515;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:09.531;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:10.164;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:10.186;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:10.201;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:10.217;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:10.772;"1 SOBJ 6060.00 03 (3)";"Transmit: 53 08 01 02 60 60 00 03 A2 45";"Modes of operation"
+16:11:10.787;"1 SOBJ 6060.00 03 (3) = OK";"Receive: 53 07 01 02 60 60 00 FB 45";
+16:11:11.567;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:11:11.589;"1 GOBJ 6041.00 = 4160 (0x1040)";"Receive: 53 09 01 01 41 60 00 40 10 87 45";
+16:11:11.621;"1 GOBJ 6060.00";"Transmit: 53 07 01 01 60 60 00 52 45";"Modes of operation"
+16:11:11.636;"1 GOBJ 6060.00 = 3 (0x03)";"Receive: 53 08 01 01 60 60 00 03 F4 45";
+16:11:11.652;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:11:11.668;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:11:11.690;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:11.705;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:11.721;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:11.737;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:12.307;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:12.323;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:12.338;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:12.354;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:13.057;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:13.073;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:13.095;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:13.110;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:13.812;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:13.828;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:13.844;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:13.860;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:14.561;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:14.577;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:14.599;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:14.614;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:15.316;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:15.332;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:15.347;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:15.363;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:16.065;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:16.081;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:16.103;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:16.119;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:16.805;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:16.820;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:16.836;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:16.852;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:17.553;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:17.569;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:17.585;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:17.607;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:18.308;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:18.324;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:18.340;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:18.355;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:19.057;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:19.073;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:19.088;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:19.110;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:19.812;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:19.828;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:19.844;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:19.859;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:20.561;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:20.577;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:20.592;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:20.614;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:21.316;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:21.332;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:21.347;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:21.363;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:22.065;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:22.081;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:22.096;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:22.118;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:22.820;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:22.836;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:22.851;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:22.867;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:23.553;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:23.569;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:23.585;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:23.600;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:24.324;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:24.340;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:24.355;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:24.371;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:25.057;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:25.073;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:25.088;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:25.104;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:25.806;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:25.828;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:25.844;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:25.859;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:26.561;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:26.577;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:26.592;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:26.608;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:27.310;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:27.332;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:27.348;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:27.363;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:28.065;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:28.081;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:28.096;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:28.112;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:11:28.814;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:11:28.836;"1 GOBJ 6064.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 64 60 00 00 00 00 00 5A 45";
+16:11:28.867;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:11:28.883;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:19.995;"1 GOBJ 1018.04";"Transmit: 53 07 01 01 18 10 04 F4 45";"Serial number (Identity object)"
+16:14:20.011;"1 GOBJ 1018.04 = 131900103 (0x07DCA2C7)";"Receive: 53 0B 01 01 18 10 04 C7 A2 DC 07 13 45";
+16:14:20.026;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:14:20.042;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:14:20.042;"1 SOBJ 6060.00 03 (3)";"Transmit: 53 08 01 02 60 60 00 03 A2 45";"Modes of operation"
+16:14:20.057;"1 SOBJ 6060.00 03 (3) = OK";"Receive: 53 07 01 02 60 60 00 FB 45";
+16:14:20.073;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:14:20.088;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:14:20.088;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:20.111;"1 GOBJ 6041.00 = 4160 (0x1040)";"Receive: 53 09 01 01 41 60 00 40 10 87 45";
+16:14:20.157;"Node 1 - Statusword: 0x1040";"Receive: 53 06 01 05 40 10 52 45";
+16:14:20.828;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:20.843;"1 GOBJ 6041.00 = 4160 (0x1040)";"Receive: 53 09 01 01 41 60 00 40 10 87 45";
+16:14:20.859;"1 GOBJ 6060.00";"Transmit: 53 07 01 01 60 60 00 52 45";"Modes of operation"
+16:14:20.874;"1 GOBJ 6060.00 = 3 (0x03)";"Receive: 53 08 01 01 60 60 00 03 F4 45";
+16:14:20.890;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:14:20.897;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:14:20.912;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:20.928;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:20.943;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:20.959;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:21.576;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:21.592;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:21.614;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:21.629;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:22.332;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:22.347;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:22.363;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:22.378;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:23.080;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:23.096;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:23.102;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:23.118;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:23.819;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:23.835;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:23.850;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:23.866;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:24.568;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:24.584;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:24.600;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:24.738;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:25.323;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:25.339;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:25.354;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:25.371;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:26.073;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:26.088;"1 GOBJ 6064.00 = -4160 (0xFFFFEFC0)";"Receive: 53 0B 01 01 64 60 00 C0 EF FF FF 20 45";
+16:14:26.104;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:26.242;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:26.827;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:26.843;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:26.858;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:26.874;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:27.576;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:27.592;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:27.608;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:27.630;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:28.331;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:28.347;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:28.362;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:28.378;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:29.080;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:29.096;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:29.111;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:29.133;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:29.836;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:29.851;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:29.867;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:29.883;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:30.569;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:30.584;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:30.600;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:30.616;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:31.324;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:31.340;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:31.356;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:31.371;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:32.073;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:32.089;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:32.104;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:32.120;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:32.822;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:32.844;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:32.860;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:32.875;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:33.578;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:33.593;"1 GOBJ 6064.00 = -4108 (0xFFFFEFF4)";"Receive: 53 0B 01 01 64 60 00 F4 EF FF FF 41 45";
+16:14:33.609;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:33.625;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:33.663;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:33.678;"1 GOBJ 6041.00 = 4160 (0x1040)";"Receive: 53 09 01 01 41 60 00 40 10 87 45";
+16:14:33.794;"1 SOBJ 6040.00 0006 (6)";"Transmit: 53 09 01 02 40 60 00 06 00 2C 45";Controlword
+16:14:33.810;"1 SOBJ 6040.00 0006 (6) = OK";"Receive: 53 07 01 02 40 60 00 DB 45";
+16:14:33.932;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:33.948;"1 GOBJ 6041.00 = 4129 (0x1021)";"Receive: 53 09 01 01 41 60 00 21 10 B3 45";
+16:14:33.948;"1 SOBJ 6040.00 000F (15)";"Transmit: 53 09 01 02 40 60 00 0F 00 25 45";Controlword
+16:14:33.963;"1 SOBJ 6040.00 000F (15) = OK";"Receive: 53 07 01 02 40 60 00 DB 45";
+16:14:33.995;"Node 1 - Statusword: 0x1021";"Receive: 53 06 01 05 21 10 66 45";
+16:14:34.180;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:34.195;"1 GOBJ 6041.00 = 4135 (0x1027)";"Receive: 53 09 01 01 41 60 00 27 10 1F 45";
+16:14:34.195;"Node 1 - Statusword: 0x1027";"Receive: 53 06 01 05 27 10 CA 45";
+16:14:34.580;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:34.596;"1 GOBJ 6041.00 = 4135 (0x1027)";"Receive: 53 09 01 01 41 60 00 27 10 1F 45";
+16:14:34.612;"1 GOBJ 6060.00";"Transmit: 53 07 01 01 60 60 00 52 45";"Modes of operation"
+16:14:34.628;"1 GOBJ 6060.00 = 3 (0x03)";"Receive: 53 08 01 01 60 60 00 03 F4 45";
+16:14:34.649;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:14:34.665;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:14:34.680;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:34.696;"1 GOBJ 6064.00 = -4084 (0xFFFFF00C)";"Receive: 53 0B 01 01 64 60 00 0C F0 FF FF 0C 45";
+16:14:34.712;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:34.727;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:35.329;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:35.351;"1 GOBJ 6064.00 = -4084 (0xFFFFF00C)";"Receive: 53 0B 01 01 64 60 00 0C F0 FF FF 0C 45";
+16:14:35.383;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:35.398;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:35.930;"1 SOBJ 60FF.00 000003E8 (1000)";"Transmit: 53 0B 01 02 FF 60 00 E8 03 00 00 D6 45";"Target velocity"
+16:14:35.953;"1 SOBJ 60FF.00 000003E8 (1000) = OK";"Receive: 53 07 01 02 FF 60 00 64 45";
+16:14:35.983;"Node 1 - Statusword: 0x0027";"Receive: 53 06 01 05 27 00 8F 45";
+16:14:36.084;"Node 1 - Statusword: 0x0427";"Receive: 53 06 01 05 27 04 21 45";
+16:14:36.099;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:36.115;"1 GOBJ 6064.00 = 41088 (0x0000A080)";"Receive: 53 0B 01 01 64 60 00 80 A0 00 00 2F 45";
+16:14:36.130;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:36.152;"1 GOBJ 606C.00 = 1002 (0x000003EA)";"Receive: 53 0B 01 01 6C 60 00 EA 03 00 00 EE 45";
+16:14:36.855;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:36.870;"1 GOBJ 6064.00 = 247460 (0x0003C6A4)";"Receive: 53 0B 01 01 64 60 00 A4 C6 03 00 3B 45";
+16:14:36.886;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:36.902;"1 GOBJ 606C.00 = 998 (0x000003E6)";"Receive: 53 0B 01 01 6C 60 00 E6 03 00 00 B7 45";
+16:14:37.588;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:37.603;"1 GOBJ 6064.00 = 447718 (0x0006D4E6)";"Receive: 53 0B 01 01 64 60 00 E6 D4 06 00 3B 45";
+16:14:37.619;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:37.635;"1 GOBJ 606C.00 = 1004 (0x000003EC)";"Receive: 53 0B 01 01 6C 60 00 EC 03 00 00 17 45";
+16:14:38.336;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:38.359;"1 GOBJ 6064.00 = 651950 (0x0009F2AE)";"Receive: 53 0B 01 01 64 60 00 AE F2 09 00 F0 45";
+16:14:38.374;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:38.390;"1 GOBJ 606C.00 = 991 (0x000003DF)";"Receive: 53 0B 01 01 6C 60 00 DF 03 00 00 71 45";
+16:14:38.876;"1 SOBJ 60FF.00 00000000 (0)";"Transmit: 53 0B 01 02 FF 60 00 00 00 00 00 C2 45";"Target velocity"
+16:14:38.892;"1 SOBJ 60FF.00 00000000 (0) = OK";"Receive: 53 07 01 02 FF 60 00 64 45";
+16:14:38.923;"Node 1 - Statusword: 0x1027";"Receive: 53 06 01 05 27 10 CA 45";
+16:14:39.008;"Node 1 - Statusword: 0x1427";"Receive: 53 06 01 05 27 14 64 45";
+16:14:39.093;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:39.108;"1 GOBJ 6064.00 = 803827 (0x000C43F3)";"Receive: 53 0B 01 01 64 60 00 F3 43 0C 00 E6 45";
+16:14:39.124;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:39.139;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:39.841;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:39.863;"1 GOBJ 6064.00 = 803827 (0x000C43F3)";"Receive: 53 0B 01 01 64 60 00 F3 43 0C 00 E6 45";
+16:14:39.878;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:39.894;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:40.495;"1 SOBJ 6040.00 000D (13)";"Transmit: 53 09 01 02 40 60 00 0D 00 D8 45";Controlword
+16:14:40.511;"1 SOBJ 6040.00 000D (13) = OK";"Receive: 53 07 01 02 40 60 00 DB 45";
+16:14:40.526;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:40.542;"1 GOBJ 6041.00 = 5184 (0x1440)";"Receive: 53 09 01 01 41 60 00 40 14 29 45";
+16:14:40.680;"Node 1 - Statusword: 0x0027";"Receive: 53 06 01 05 27 00 8F 45";
+16:14:40.696;"Node 1 - Statusword: 0x1440";"Receive: 53 06 01 05 40 14 FC 45";
+16:14:41.281;"1 GOBJ 6041.00";"Transmit: 53 07 01 01 41 60 00 73 45";Statusword
+16:14:41.297;"1 GOBJ 6041.00 = 5184 (0x1440)";"Receive: 53 09 01 01 41 60 00 40 14 29 45";
+16:14:41.313;"1 GOBJ 6060.00";"Transmit: 53 07 01 01 60 60 00 52 45";"Modes of operation"
+16:14:41.328;"1 GOBJ 6060.00 = 3 (0x03)";"Receive: 53 08 01 01 60 60 00 03 F4 45";
+16:14:41.344;"1 GOBJ 6061.00";"Transmit: 53 07 01 01 61 60 00 53 45";"Modes of operation display"
+16:14:41.350;"1 GOBJ 6061.00 = 3 (0x03)";"Receive: 53 08 01 01 61 60 00 03 0A 45";
+16:14:41.366;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:41.382;"1 GOBJ 6064.00 = 803825 (0x000C43F1)";"Receive: 53 0B 01 01 64 60 00 F1 43 0C 00 B1 45";
+16:14:41.397;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:41.413;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";
+16:14:42.030;"1 GOBJ 6064.00";"Transmit: 53 07 01 01 64 60 00 56 45";"Position actual value"
+16:14:42.046;"1 GOBJ 6064.00 = 803825 (0x000C43F1)";"Receive: 53 0B 01 01 64 60 00 F1 43 0C 00 B1 45";
+16:14:42.068;"1 GOBJ 606C.00";"Transmit: 53 07 01 01 6C 60 00 5E 45";"Velocity actual value"
+16:14:42.083;"1 GOBJ 606C.00 = 0 (0x00000000)";"Receive: 53 0B 01 01 6C 60 00 00 00 00 00 AD 45";

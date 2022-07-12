@@ -255,7 +255,7 @@ UINT WINAPI CSerialPort::ListenThread(void *pParam) {
 //        cout<<RX_BUF<<endl;
         if (getBUF != "")
             RX_BUF = getBUF;
-        cout << RX_BUF << endl;
+        cout<<"GET_buf:"<<endl << RX_BUF << endl;
     }
     return 0;
 }
@@ -483,21 +483,37 @@ void CSerialPort::writeControlWord(uint8_t temp[], uint8_t type) {
     uint8_t controlWordHB;
 
     switch (type) {
-        //停车
+        //初始开启
         case 1: {
             controlWordLB = 0x06;
             controlWordHB = 0x00;
             break;
         }
-            //开机
+            //停机
         case 2: {
-            controlWordLB = 0x07;
+            controlWordLB = 0x0D;
             controlWordHB = 0x00;
             break;
         }
             //使能
         case 3: {
             controlWordLB = 0x0F;
+            controlWordHB = 0x00;
+            break;
+        }
+        //停机开启
+        case 4: {
+            controlWordLB = 0x0E;
+            controlWordHB = 0x00;
+            break;
+        }
+        case 5:{
+            controlWordLB = 0x07;
+            controlWordHB = 0x00;
+            break;
+        }
+        case 6:{
+            controlWordLB = 0x00;
             controlWordHB = 0x00;
             break;
         }
@@ -510,19 +526,43 @@ void CSerialPort::writeControlWord(uint8_t temp[], uint8_t type) {
     temp[1] = length;
     temp[2] = NodeNum;
     temp[3] = command;
-    temp[4] = controlWordLB;
-    temp[5] = controlWordHB;
+    temp[4] =controlWordLB;
+    temp[5] =controlWordHB;
     uint8_t CRC = 0xFF;
-    for (int i = 1; i <length; i++){
-        printf("%x",temp[i]);
-        CRC = CalcCRCByte(temp[i], CRC);}
+    for (uint8_t i = 1; i <length; i++)
+        CRC = CalcCRCByte(temp[i], CRC);
     temp[6] = CRC;
     temp[7] = 'E';
 }
 
+//写控制模式
+void CSerialPort::writeOperationMode(uint8_t temp[],int8_t type){
+    uint8_t length = 0x08;
+    uint8_t command = 0x02;
+    uint8_t NodeNum = 0x01;
+    uint8_t indexHB=0x60;
+    uint8_t indexLB=0x60;
+    uint8_t subindex=0x00;
+    temp[0] = 'S';
+    temp[1] = length;
+    temp[2] = NodeNum;
+    temp[3] = command;
+    temp[4] = indexLB;
+    temp[5] = indexHB;
+    temp[6] = subindex;
+    if(type==1)
+        temp[7]=0x01;
+    if(type==3)
+        temp[7] =0X03;
+    uint8_t CRC = 0xFF;
+    for (uint8_t i = 1; i <length; i++)
+        CRC = CalcCRCByte(temp[i], CRC);
+    temp[8] =CRC;
+    temp[9]='E';
+}
 //写目标数据
-void CSerialPort::writeData(uint8_t temp[], int data, uint8_t type) {
-    uint8_t length = 0x0a;
+void CSerialPort::getData(uint8_t temp[], int32_t data, uint8_t type) {
+    uint8_t length = 0x0b;
     uint8_t command = 0x02;
     uint8_t NodeNum = 0x01;
     uint8_t indexHB;
@@ -549,19 +589,13 @@ void CSerialPort::writeData(uint8_t temp[], int data, uint8_t type) {
         }
     }
 
-    uint8_t dataBuf[4];
-    dataBuf[3] = data & 0xff;
-    dataBuf[2] = data >> 8 & 0xff;
-    dataBuf[1] = data >> 16 & 0xff;
-    dataBuf[0] = data >> 24 & 0xff;
-
     temp[0] = 'S';
     temp[1] = length;
     temp[2] = NodeNum;
     temp[3] = command;
     temp[4] = indexLB;
     temp[5] = indexHB;
-    temp[6] = subindex;
+    temp[6] = 0x00;
     /********************************************/
     /*  这里有个问题是写入数据是按低位写还是高位优先写？ */
     /*               问题解决，按低位写            */

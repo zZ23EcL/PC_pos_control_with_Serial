@@ -25,12 +25,12 @@ int _tmain(int argc, _TCHAR *argv[]) {
     } else {
         std::cout << "initPort success !" << std::endl;
     }
-//    if (!mySerialPort.OpenListenThread())//是否打开监听线程，开启线程用来传输返回值
-//    {
-//        std::cout << "OpenListenThread fail !" << std::endl;
-//    } else {
-//        std::cout << "OpenListenThread success !" << std::endl;
-//    }
+    if (!mySerialPort.OpenListenThread())//是否打开监听线程，开启线程用来传输返回值
+    {
+        std::cout << "OpenListenThread fail !" << std::endl;
+    } else {
+        std::cout << "OpenListenThread success !" << std::endl;
+    }
 
 //    /*这里发送的10进制，得到的是一个一个的16进制*/
 //    int test=12345;
@@ -98,6 +98,18 @@ int _tmain(int argc, _TCHAR *argv[]) {
 //    stattst[10]='E';
 //    t=mySerialPort.readBuffer(stattst,0);
 //    printf("%d\n",t);
+
+/* **************************/
+/*    设置控制模式为PV         */
+/* **************************/
+//    printf("\nSet Operation Mode:  PV....\n");
+//    uint8_t SetOpMode[10];
+//    mySerialPort.writeOperationMode(SetOpMode,0x03);
+//    for(int i=0;i<10;i++)
+//        printf("%x ",SetOpMode[i]);
+//    mySerialPort.WriteData(SetOpMode, 10);
+//    printf("\nSet PV Mode Finished!\n");
+
     while(1){
 
         //暂停
@@ -113,14 +125,17 @@ int _tmain(int argc, _TCHAR *argv[]) {
             printf("\nStart Up! Connecting Motor...\n");
             uint8_t controlw[8];
             mySerialPort.writeControlWord(controlw,1);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
-            Sleep(20);
-            mySerialPort.writeControlWord(controlw,2);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
-            Sleep(20);
+            mySerialPort.WriteData(controlw, 8);
+            mySerialPort.writeControlWord(controlw,5);
+            mySerialPort.WriteData(controlw, 8);
             mySerialPort.writeControlWord(controlw,3);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            mySerialPort.WriteData(controlw, 8);
             printf("Connecting Finished!\n");
+            printf("\nSet Velocity=1000....\n");
+            uint8_t datatemp[13];
+            mySerialPort.getData(datatemp,1000,1);
+            mySerialPort.WriteData(datatemp, 13);
+            Sleep(20);
         }
         if(KEY_DOWN('C')){
             int type;
@@ -137,7 +152,7 @@ int _tmain(int argc, _TCHAR *argv[]) {
                 Ctype=0x00;
             printf("\nplease input control value  :");
             cin >> Cvalue;
-            mySerialPort.writeData(datatemp,Cvalue,Ctype);
+            mySerialPort.getData(datatemp,Cvalue,Ctype);
             cout << mySerialPort.WriteData(datatemp, 13) << endl;
             if (!mySerialPort.OpenListenThread())//是否打开监听线程，开启线程用来传输返回值
             {
@@ -150,15 +165,77 @@ int _tmain(int argc, _TCHAR *argv[]) {
         if(KEY_DOWN('U')){
             printf("\nSwitch OFF! Disconnecting Motor...\n");
             uint8_t controlw[8];
-            mySerialPort.writeControlWord(controlw,3);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
-            Sleep(20);
             mySerialPort.writeControlWord(controlw,2);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
+            mySerialPort.WriteData(controlw, 8);
             Sleep(20);
-            mySerialPort.writeControlWord(controlw,1);
-            cout << mySerialPort.WriteData(controlw, 8) << endl;
             printf("Closed Connecting Finished!\n");
+        }
+        //重新启动
+        if(KEY_DOWN('R')){
+            printf("\nReStart Up! Connecting Motor...\n");
+            uint8_t controlw[8];
+            mySerialPort.writeControlWord(controlw,4);
+            mySerialPort.WriteData(controlw, 8);
+            Sleep(20);
+            mySerialPort.writeControlWord(controlw,3);
+            mySerialPort.WriteData(controlw, 8);
+            printf("ReConnecting Finished!\n");
+            Sleep(20);
+        }
+        if(KEY_DOWN('V')){
+            printf("\nSet Operation Mode:  PV....\n");
+            uint8_t SetOpMode[10];
+            mySerialPort.writeOperationMode(SetOpMode,0x03);
+            for(int i=0;i<10;i++)
+                printf("%x ",SetOpMode[i]);
+            mySerialPort.WriteData(SetOpMode, 10);
+            printf("\nSet PV Mode Finished!\n");
+            Sleep(20);
+        }
+        if(KEY_DOWN('P')){
+            printf("\nSet Operation Mode:  PP....\n");
+            uint8_t SetOpMode[10];
+            mySerialPort.writeOperationMode(SetOpMode,0x01);
+            mySerialPort.WriteData(SetOpMode, 10);
+            printf("\nSet PP Mode Finished!\n");
+            Sleep(20);
+        }
+        if(KEY_DOWN('B')){
+            printf("\nSet Velocity=1000....\n");
+            uint8_t datatemp[13];
+            mySerialPort.getData(datatemp,1000,1);
+            for(int i=0;i<13;i++)
+                printf("%x ",datatemp[i]);
+            mySerialPort.WriteData(datatemp, 13);
+            Sleep(20);
+        }
+        if(KEY_DOWN('N')){
+            printf("\nSet Velocity=0....\n");
+            uint8_t datatemp[13];
+            mySerialPort.getData(datatemp,0,1);
+//            for(int i=0;i<13;i++)
+//                printf("%x ",datatemp[i]);
+            mySerialPort.WriteData(datatemp, 13);
+            Sleep(20);
+        }
+        if(KEY_DOWN('T')){
+            printf("\nOPERATION TEST\n");
+            uint8_t modetemp[9];
+            modetemp[0]='S';
+            modetemp[1]=0x07;
+            modetemp[2]=0x01;
+            modetemp[3]=0x01;
+            modetemp[4]=0x60;
+            modetemp[5]=0x60;
+            modetemp[6]=0x00;
+            modetemp[7]=0x52;
+            modetemp[8]='E';
+            mySerialPort.WriteData(modetemp, 9);
+            Sleep(20);
+            modetemp[4]=0x61;
+            modetemp[7]=0x53;
+            mySerialPort.WriteData(modetemp, 9);
+            Sleep(20);
         }
         //修改数据
         Sleep(20);//循环时间间隔，防止太占内存,这个值不能设置的太大，否则有问题，之前的200就有问题
